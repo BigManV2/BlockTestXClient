@@ -118,12 +118,12 @@
         (function() {
             var checkCookie = document.cookie.indexOf('accessGranted=true') === -1;
             if (checkCookie) {
-                window.location.href = 'page1.html';
+                window.location.href = 'login';
             }
 
             window.acknowledgeAnnouncement = function() {
                 document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-                window.location.href = 'game1.html';
+                window.location.href = 'blocktest';
             };
 
             window.openMap = function() {
@@ -139,7 +139,7 @@
             window.removeCookie = function() {
                 document.cookie = 'accessGranted=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
                 alert('You have been logged out.');
-                window.location.href = 'page1.html';
+                window.location.href = 'login';
             };
         })();
     </script>
