@@ -40,7 +40,7 @@
             color: #007b07;
         }
 
-        p{
+        p {
             margin-bottom: 30px;
             color: #007b07;
         }
@@ -88,29 +88,27 @@
 <body>
     <div class="content">
         <h1>Enter Password</h1>
-        <h3 class="h3">the password is temporarily "2lazy4discord"</h3>
-        <h3>it will be diffrent in the future</h3>
+        <h3 class="h3">The password is "2lazy4discord"</h3>
+        <h3>It will be different in the future</h3>
         <input type="password" id="passwordInput" placeholder="Password">
         <div class="buttons">
             <button onclick="checkPassword()">Submit</button>
             <p class="bottomtext">Join The Discord For A Password</p>
-            <a class="bottomtext2"href="https://discord.gg/6Kwe23KTWf"> Discord</a>
+            <a class="bottomtext2" href="https://discord.gg/6Kwe23KTWf"> Discord</a>
         </div>
     </div>
 
     <script>
         function checkPassword() {
             const passwordInput = document.getElementById('passwordInput').value;
-            fetch('c6vn68234tv1.txt').then(response => response.text()).then(data => {
-                const passwords = data.split('\n').map(p => p.trim());
-                if (passwords.includes(passwordInput)) {
-                    document.cookie = 'accessGranted=true; path=/';
-                    alert('you wont need to re-login after you close the tab');
-                    window.location.href = 'main.html';
-                } else {
-                    alert('Incorrect password.');
-                }
-            });
+            const correctPassword = '2lazy4discord';
+            if (passwordInput === correctPassword) {
+                document.cookie = 'accessGranted=true; path=/';
+                alert('You won\'t need to re-login after you close the tab');
+                window.location.href = 'main.html';
+            } else {
+                alert('Incorrect password.');
+            }
         }
     </script>
 </body>
