@@ -1,6 +1,6 @@
 ‼‼‼!!!!!!IMPORTANT MESSAGE!!!!!!!‼‼‼
 wait a second before using the login command!
-+ i added new textures :0
++ made the thing look better for blocktest
 ------------------------------------------------------
 Welcome to the second grand opening of blocktest
 -BigManV2
