@@ -16,6 +16,17 @@
 </head>
 <body>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var md = new MobileDetect(window.navigator.userAgent);
+            if (md.mobile()) {
+                // User is on a mobile device
+               alert('test');
+            } else {
+                // User is on a desktop device
+            }
+        });
+    </script>
+    <script>
         // Check if the cookie exists
         if (document.cookie.includes("accessGranted=true")) {
             window.location.href = "main"; // Redirect to Page 2
