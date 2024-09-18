@@ -99,8 +99,22 @@
     </div>
 
     <script>
-        function checkPassword() {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        if (urlParams.has('pass')) {
+            const paramValue = urlParams.get('pass');
+            const passwrd = '${paramValue}';
+            checkPassword(passwrd);
+            // You can use this value in your application
+        } else {
+            document.title('Parameter not found.');
+        }
+        function setPassword() {
             const passwordInput = document.getElementById('passwordInput').value;
+            checkPassword(passwordInput);
+        }
+        function checkPassword(passToCheck) {
+            const passwordInput = passToCheck;
             const correctPassword = '2lazy4discord';
             if (passwordInput === correctPassword) {
                 document.cookie = 'accessGranted=true; path=/';
