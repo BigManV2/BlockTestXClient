@@ -1,0 +1,14 @@
+<script>
+        (function() {
+            fetch('tos.txt').then(function(response) {
+                return response.text();
+            }).then(function(text) {
+                text = text.trim();
+                if (text) {
+                    alert(text); // Display the announcement in a popup
+                }
+            }).catch(function(error) {
+                console.error('Error fetching tos.txt:', error);
+            });
+        })();
+    </script>
