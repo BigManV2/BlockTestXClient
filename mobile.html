@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continue</title>
+    <style>
+        /* Center the content horizontally and vertically */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #282828;
+        }
+
+        .content {
+            background-color: #3f3f3f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #007b07;
+        }
+
+        .h3top {
+            margin-top: -15px;
+            color: #007b07
+        }
+
+        p {
+            margin-bottom: 20px;
+             color: #007b07;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #348a2b;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #007b07;
+        }
+
+        .content2 {
+            position: fixed;
+            bottom: 25px;
+            background-color: #3f3f3f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        /* Footer styles */
+        footer {
+            
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer a {
+            color: #519846;
+            margin-top: 5px;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            text-decoration: blink;
+        }
+        .footertext {
+            color: #007b07;
+            margin-bottom: 0px;
+            margin-top: -5px;
+        }
+        .log {
+            background-color: #bf2713;
+        }
+        .log:hover {
+            background-color: #6e150a;
+        }
+        
+    </style>
+         
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome to BlockTest</h1>
+        <h3 class="h3top">a server by cool people for cool people 😎</h3>
+        <p>Est. 2023</p>
+        <div class="buttons">
+            <button onclick="acknowledgeAnnouncement()">Continue to Game</button>
+            <button onclick="openMap()">Open Server Map</button>
+            <button onclick="openContact()">Contact Us</button>
+            <button class="log" onclick="removeCookie()">Logout</button>
+        </div>
+    </div>
 
