@@ -39,6 +39,15 @@
             margin-bottom: 20px;
              color: #007b07;
         }
+        
+        .pbottom {
+            margin-bottom: 20px;
+             color: #007b07;
+        }
+        
+        .ptop {
+             color: #007b07;
+        }
 
         .buttons {
             display: flex;
@@ -106,13 +115,13 @@
     <div class="content">
         <h1>Welcome Mobile User</h1>
         <h3 class="h3top">We just wanted to let you know</h3>
-        <p>you cannont play on a controller or touchscreen device</p>
-        <p>if you think this is an error you may still continue</p>
+        <p class="ptop">you cannont play on a controller or touchscreen device if you think this is an error you may still continue but you have been warned</p>
         <div class="buttons">
-            <button onclick="acknowledgeAnnouncement()">Continue to Game</button>
-            <button onclick="openMap()">Open Server Map</button>
-            <button onclick="openContact()">Contact Us</button>
-            <button class="log" onclick="removeCookie()">Logout</button>
+            <button onclick="continueToLogin()">Continue</button>
         </div>
     </div>
-
+<script>
+function continueToLogin() {
+alert("You Have Been Warned\ndont complain if it wont work")
+}
+</script>
