@@ -113,10 +113,11 @@
             const passwordInput = document.getElementById('passwordInput').value;
             checkPassword(passwordInput);
         }
+        /* very secure password system 👍*/
         function checkPassword(passToCheck) {
-            const passwordInput = passToCheck;
+            const passwordInput = document.getElementById('passwordInput').value;;
             const correctPassword = '2lazy4discord';
-            if (passwordInput === correctPassword) {
+            if (passwordInput === correctPassword||) {
                 document.cookie = 'accessGranted=true; path=/';
                 alert('You won\'t need to re-login after you close the tab');
                 window.location.href = 'main';
