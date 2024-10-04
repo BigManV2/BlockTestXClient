@@ -114,10 +114,28 @@
             checkPassword(passwordInput);
         }
         /* very secure password system 👍*/
-        function checkPassword(passToCheck) {
-            const passwordInput = document.getElementById('passwordInput').value;;
-            const correctPassword = '2lazy4discord';
-            if (passwordInput === correctPassword) {
+          async function sha256(message) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(message);
+
+  const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+
+  // Convert the hash to a hexadecimal string
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+  return hashHex;
+}
+
+// Example usage
+
+        /* very secure password system 👍*/
+        async function checkPassword() {
+            
+            const passwordInput = document.getElementById('passwordInput').value;
+            const correctPassword = 'f8291847f6cd1f73310aeeec1d41bd8ddca1de9d1da8e38b53e8c6abc66f882f';
+            const test123 = await sha256(passwordInput);
+            if (test123 === correctPassword) {
                 document.cookie = 'accessGranted=true; path=/';
                 alert('You won\'t need to re-login after you close the tab');
                 window.location.href = 'main';
