@@ -10,6 +10,12 @@ animation-duration: 1s;
 }
 </style>
 <html class="jiggle" lang="en">
+	<script type="text/javascript" src="embed.js"></script>
+<script type="text/javascript">
+window.addEventListener("load", () => {
+	new ServerEmbed(document.getElementById("embed"), "100%").ping("play.blocktestx.xyz");
+});
+</script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,6 +133,8 @@ animation-duration: 1s;
         <button onclick="openContact()">Contact Us</button>
         <button class="log" onclick="removeCookie()">Logout</button>
     </div>
+    <br>
+	<div id="embed"></div>
 </div>
 
 <script>
