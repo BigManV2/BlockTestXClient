@@ -28,12 +28,7 @@
         });
     </script>
     <script>
-        // Check if the cookie exists
-        if (document.cookie.includes("accessGranted=true")) {
-            window.location.href = "main"; // Redirect to Page 2
-        } else {
-            window.location.href = "login"; // Redirect to Page 1
-        }
+        window.onload(window.location.href = "main");
     </script>
 </body>
 </html>
