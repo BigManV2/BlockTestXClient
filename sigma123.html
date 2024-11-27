@@ -2,18 +2,37 @@
 <html>
 <head>
     <script>
-        (function() {
-            fetch('https://blocktest.live/announce.txt').then(function(response) {
-                return response.text();
-            }).then(function(text) {
-                text = text.trim();
-                if (text) {
-                    showPopup(text); // Display the announcement in a popup
-                }
-            }).catch(function(error) {
-                console.error('Error fetching announce.txt:', error);
-            });
-        })();
+        const MAX_RETRIES = 5;  // Maximum number of retries
+        let retries = 0;  // Retry counter
+
+        function fetchAnnouncement() {
+            fetch('https://blocktest.live/announce.txt')
+                .then(function(response) {
+                    return response.text();
+                })
+                .then(function(text) {
+                    text = text.trim();
+                    if (text) {
+                        showPopup(text);  // Display the announcement in a popup
+                    } else {
+                        if (retries < MAX_RETRIES) {
+                            retries++;
+                            console.log(`Announcement is empty. Retrying... (${retries}/${MAX_RETRIES})`);
+                            fetchAnnouncement();  // Retry if the content is empty
+                        } else {
+                            console.error('Failed to fetch announcement after multiple attempts.');
+                        }
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error fetching announce.txt:', error);
+                });
+        }
+
+        // Start fetching the announcement when the page loads
+        window.onload = function() {
+            fetchAnnouncement();
+        };
 
         function showPopup(message) {
             document.getElementById("popupMessage").innerHTML = formatMessage(message);
