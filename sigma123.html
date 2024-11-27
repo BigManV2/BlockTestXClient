@@ -16,13 +16,13 @@
         })();
 
         function showPopup(message) {
-            document.getElementById("popupMessage").textContent = formatMessage(message);
+            document.getElementById("popupMessage").innerHTML = formatMessage(message);
             document.getElementById("popup").style.display = "block";
         }
 
-        // Optional: Replace \n with actual newlines for multiline messages
+        // Replace \n with <br> for multiline messages
         function formatMessage(message) {
-            return message.replace(/\\n/g, '\n');
+            return message.replace(/\\n/g, '<br>');
         }
     </script>
     <meta charset="UTF-8" />
@@ -73,7 +73,7 @@
         p {
             margin-bottom: 20px;
             color: #007b07;
-            white-space: pre-line; /* Ensures \n is rendered as new lines */
+            white-space: pre-line; /* This ensures newlines are shown in the message */
         }
 
         button {
