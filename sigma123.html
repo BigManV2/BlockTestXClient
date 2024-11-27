@@ -2,48 +2,26 @@
 <html>
 <head>
     <script>
-        const MAX_RETRIES = 5;  // Maximum number of retries
-        let retries = 0;  // Retry counter
+        // Define the announcement content here (instead of fetching it)
+        const announcementContent = 'Welcome to the game!\\nEnjoy your adventure!\\nHave fun!';  // Example content
 
-        function fetchAnnouncement() {
-            fetch('https://blocktest.live/announce.txt')
-                .then(function(response) {
-                    return response.text();
-                })
-                .then(function(text) {
-                    text = text.trim();
-                    if (text) {
-                        showPopup(text);  // Display the announcement in a popup
-                    } else {
-                        if (retries < MAX_RETRIES) {
-                            retries++;
-                            console.log(`Announcement is empty. Retrying... (${retries}/${MAX_RETRIES})`);
-                            fetchAnnouncement();  // Retry if the content is empty
-                        } else {
-                            console.error('Failed to fetch announcement after multiple attempts.');
-                        }
-                    }
-                })
-                .catch(function(error) {
-                    console.error('Error fetching announce.txt:', error);
-                });
-        }
-
-        // Start fetching the announcement when the page loads
-        window.onload = function() {
-            fetchAnnouncement();
-        };
-
+        // Function to display the popup
         function showPopup(message) {
             document.getElementById("popupMessage").innerHTML = formatMessage(message);
             document.getElementById("popup").style.display = "block";
-            document.getElementById("popup").classList.add('fade-in');
         }
 
-        // Replace \n with <br> for multiline messages
+        // Format the message by replacing '\\n' with <br> for new lines
         function formatMessage(message) {
             return message.replace(/\\n/g, '<br>');
         }
+
+        window.onload = function() {
+            // Check if there is content and show the popup
+            if (announcementContent.trim()) {
+                showPopup(announcementContent);  // Show the popup if there's content
+            }
+        };
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,12 +61,6 @@
             transform: translate(-50%, -50%);
             z-index: 1000;
             display: none;  /* Hidden initially */
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .content.fade-in {
-            opacity: 1;
         }
 
         h1 {
@@ -146,7 +118,6 @@
         // Optionally, you can show the popup after a slight delay so it doesn't block the game immediately
         setTimeout(function() {
             document.getElementById("popup").style.display = "block";
-            document.getElementById("popup").classList.add('fade-in');
         }, 1000);  // Show popup 1 second after page load
     };
 
@@ -158,7 +129,6 @@
 
     // Close popup and resume game without interruption
     function closePopup() {
-        document.getElementById("popup").classList.remove('fade-in');
         document.getElementById("popup").style.display = "none";
     }
 </script>
