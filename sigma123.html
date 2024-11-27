@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        (function() {
+            fetch('https://blocktest.live/announce.txt').then(function(response) {
+                return response.text();
+            }).then(function(text) {
+                text = text.trim();
+                if (text) {
+                    showPopup(text); // Display the announcement in a popup
+                }
+            }).catch(function(error) {
+                console.error('Error fetching announce.txt:', error);
+            });
+        })();
+
+        function showPopup(message) {
+            document.getElementById("popupMessage").textContent = formatMessage(message);
+            document.getElementById("popup").style.display = "block";
+        }
+
+        // Optional: Replace \n with actual newlines for multiline messages
+        function formatMessage(message) {
+            return message.replace(/\\n/g, '\n');
+        }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Play minecraft 1.8 in your browser" />
+    <meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
+    <title>EaglercraftX 1.8</title>
+    <meta property="og:locale" content="en-US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EaglercraftX 1.8" />
+    <meta property="og:description" content="Play minecraft 1.8 in your browser" />
+    <meta property="og:image" content="https://blocktest.live/favicon.png" />
+    <link type="image/png" rel="shortcut icon" href="favicon.png" />
+    <script type="text/javascript" src="https://blocktest.live/classes.js"></script>
+    <style>
+        /* Global styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #282828;
+            overflow: hidden;
+        }
+
+        .content {
+            background-color: #3f3f3f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;  /* Hidden initially */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #007b07;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #007b07;
+            white-space: pre-line; /* Ensures \n is rendered as new lines */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #348a2b;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #007b07;
+        }
+
+        /* Close button */
+        .close-btn {
+            background-color: #bf2713;
+        }
+
+        .close-btn:hover {
+            background-color: #9b1f0e;
+        }
+    </style>
+</head>
+
+<!-- Popup content -->
+<div class="content" id="popup">
+    <h1>Popup Title</h1>
+    <p id="popupMessage">This is the message that can handle newlines.\nLike this one!</p>
+    <div>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script>
+    // Show popup on page load, but let the game continue
+    window.onload = function() {
+        // Game setup code continues...
+        startGame();
+
+        // Optionally, you can show the popup after a slight delay so it doesn't block the game immediately
+        setTimeout(function() {
+            document.getElementById("popup").style.display = "block";
+        }, 1000);  // Show popup 1 second after page load
+    };
+
+    // Function to start the game logic
+    function startGame() {
+        // Game-related code would go here (e.g., initiating the game or rendering the game canvas)
+        console.log("Game started!");
+    }
+
+    // Close popup and resume game without interruption
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+<script type="text/javascript">
+    "use strict";
+    window.addEventListener("load", () => {
+        if(document.location.href.startsWith("file:")) {
+            alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+        } else {
+            // Game-related options
+            const relayId = Math.floor(Math.random() * 3);
+            window.eaglercraftXOpts = {
+                demoMode: false,
+                container: "game_frame",
+                assetsURI: "https://blocktest.live/assets.epk",
+                localesURI: "https://blocktest.live/lang/",
+                worldsDB: "worlds",
+                servers: [
+                    { addr: "Play.BlockTestX.xyz", name: "BlockTest" }
+                ],
+                relays: [
+                    { addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
+                    { addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },
+                    { addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
+                ]
+            };
+
+            // Process query parameters to join a server
+            var q = window.location.search;
+            if (typeof q === "string" && q.startsWith("?")) {
+                q = new URLSearchParams(q);
+                var s = q.get("server");
+                if (s) window.eaglercraftXOpts.joinServer = s;
+            }
+
+            main();
+        }
+    });
+</script>
+</head>
+<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
+</body>
+</html>
