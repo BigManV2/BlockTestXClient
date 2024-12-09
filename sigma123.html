@@ -1,39 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script>
-        // Define the announcement content here (instead of fetching it)
-        const announcementContent = 'Welcome to the game!\\nEnjoy your adventure!\\nHave fun!';  // Example content
-
-        // Function to display the popup
-        function showPopup(message) {
-            document.getElementById("popupMessage").innerHTML = formatMessage(message);
-            document.getElementById("popup").style.display = "block";
-        }
-
-        // Format the message by replacing '\\n' with <br> for new lines
-        function formatMessage(message) {
-            return message.replace(/\\n/g, '<br>');
-        }
-
-        window.onload = function() {
-            // Check if there is content and show the popup
-            if (announcementContent.trim()) {
-                showPopup(announcementContent);  // Show the popup if there's content
-            }
-        };
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Play minecraft 1.8 in your browser" />
-    <meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play minecraft 1.8 in your browser">
+    <meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8">
     <title>EaglercraftX 1.8</title>
-    <meta property="og:locale" content="en-US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="EaglercraftX 1.8" />
-    <meta property="og:description" content="Play minecraft 1.8 in your browser" />
-    <meta property="og:image" content="https://blocktest.live/favicon.png" />
-    <link type="image/png" rel="shortcut icon" href="favicon.png" />
+    <link type="image/png" rel="shortcut icon" href="favicon.png">
     <script type="text/javascript" src="https://blocktest.live/classes.js"></script>
     <style>
         /* Global styling */
@@ -54,7 +27,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            max-width: 100%;
             position: fixed;
             top: 50%;
             left: 50%;
@@ -100,76 +73,44 @@
     </style>
 </head>
 
-<!-- Popup content -->
-<div class="content" id="popup">
-    <h1>Popup Title</h1>
-    <p id="popupMessage">This is the message that can handle newlines.\nLike this one!</p>
-    <div>
-        <button class="close-btn" onclick="closePopup()">Close</button>
+<body>
+
+    <!-- Popup content -->
+    <div class="content" id="popup">
+        <h1>Popup Title</h1>
+        <p id="popupMessage">This is the message that can handle newlines.\nLike this one!</p>
+        <div>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
     </div>
-</div>
 
-<script>
-    // Show popup on page load, but let the game continue
-    window.onload = function() {
-        // Game setup code continues...
-        startGame();
+    <script>
+        // Define the announcement content
+        const announcementContent = 'Welcome to the game!\\nEnjoy your adernguerhgeiuhgiuhuoiwhoweuihgeiughoeriwuiwuehgoiweurhgoihventure!\\nHave fun!';
 
-        // Optionally, you can show the popup after a slight delay so it doesn't block the game immediately
-        setTimeout(function() {
+        // Function to display the popup
+        function showPopup(message) {
+            document.getElementById("popupMessage").innerHTML = formatMessage(message);
             document.getElementById("popup").style.display = "block";
-        }, 1000);  // Show popup 1 second after page load
-    };
-
-    // Function to start the game logic
-    function startGame() {
-        // Game-related code would go here (e.g., initiating the game or rendering the game canvas)
-        console.log("Game started!");
-    }
-
-    // Close popup and resume game without interruption
-    function closePopup() {
-        document.getElementById("popup").style.display = "none";
-    }
-</script>
-
-<script type="text/javascript">
-    "use strict";
-    window.addEventListener("load", () => {
-        if(document.location.href.startsWith("file:")) {
-            alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-        } else {
-            // Game-related options
-            const relayId = Math.floor(Math.random() * 3);
-            window.eaglercraftXOpts = {
-                demoMode: false,
-                container: "game_frame",
-                assetsURI: "https://blocktest.live/assets.epk",
-                localesURI: "https://blocktest.live/lang/",
-                worldsDB: "worlds",
-                servers: [
-                    { addr: "Play.BlockTestX.xyz", name: "BlockTest" }
-                ],
-                relays: [
-                    { addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
-                    { addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },
-                    { addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
-                ]
-            };
-
-            // Process query parameters to join a server
-            var q = window.location.search;
-            if (typeof q === "string" && q.startsWith("?")) {
-                q = new URLSearchParams(q);
-                var s = q.get("server");
-                if (s) window.eaglercraftXOpts.joinServer = s;
-            }
-
-            main();
         }
-    });
-</script>
-</head>
-<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
+
+        // Format the message by replacing '\\n' with <br> for new lines
+        function formatMessage(message) {
+            return message.replace(/\\n/g, '<br>');
+        }
+
+        window.onload = function() {
+            // Check if there is content and show the popup
+            if (announcementContent.trim()) {
+                showPopup(announcementContent);  // Show the popup if there's content
+            }
+        };
+
+        // Close popup
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
