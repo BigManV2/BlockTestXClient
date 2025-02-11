@@ -1,0 +1,22 @@
+<!-- Any page where you want the popup -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <script src="popup.js"></script>
+</head>
+<body>
+    <h1>Welcome to the Game</h1>
+
+    <button onclick="initializePopup('Custom message for this page!')">Show Popup</button>
+
+    <script>
+        // This will automatically show the default popup message when the page loads
+        window.onload = function() {
+            initializePopup();  // Optional: You can provide a custom message if needed
+        };
+    </script>
+</body>
+</html>
