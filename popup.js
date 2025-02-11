@@ -8,7 +8,7 @@ function showPopup(message) {
     const popupMessage = document.getElementById('popup-message');
     popupMessage.textContent = message;  // Set the message in the popup
     popup.style.display = 'block';  // Show the popup
-    alert("the popup thingy finished" + message)
+    
 }
 
 // Close the popup
@@ -19,7 +19,7 @@ function closePopup() {
 // Event listeners
 showPopupBtn.addEventListener('click', () => {
     showPopup('This is a dynamic message for the popup!\nYou can customize it.');
-    alert("it should have shown up");
+    
 });
 
 closeBtn.addEventListener('click', closePopup);
