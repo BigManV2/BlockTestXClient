@@ -14,7 +14,7 @@ function formatMessage(message) {
 }
 
 // Function to initialize the popup with a custom message (or default)
-function initializePopup(message = defaultAnnouncementContent) {
+function initializePopup(message) {
     if (message.trim()) {
         showPopup(message);  // Show the popup if there's content
     }
