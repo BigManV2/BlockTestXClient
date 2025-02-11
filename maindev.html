@@ -13,45 +13,29 @@
             animation-duration: 1s;
         }
 
-        /* Center the content horizontally and vertically */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #282828;
-            overflow: hidden;
-        }
-
-        /* Full-screen modal overlay */
-        .popup-overlay {
+        /* Popup Container */
+        .popup-container {
+            display: none; /* Hidden initially */
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-            display: none; /* Hidden initially */
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Transparent dark background */
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
-        /* Popup content inside overlay */
-        .popup-content {
+        /* Popup content */
+        #popup {
             background-color: #3f3f3f;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
             max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
             animation: zoomIn 1s ease-in-out;
+            text-align: center;
         }
 
         h1 {
@@ -59,12 +43,7 @@
             color: #007b07;
         }
 
-        .h3top {
-            margin-top: -15px;
-            color: #007b07;
-        }
-
-        p {
+        #popup-message {
             margin-bottom: 20px;
             color: #007b07;
         }
@@ -90,32 +69,6 @@
             background-color: #007b07;
         }
 
-        /* Footer styles */
-        footer {
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .norm {
-            color: #519846;
-            margin-top: 5px;
-            text-decoration: underline;
-        }
-
-        .norm:hover {
-            text-decoration: blink;
-        }
-
-        .footertext {
-            color: #007b07;
-            margin-bottom: 0px;
-            margin-top: -5px;
-        }
-
-        .serverdis {
-            animation: vibrate 0.4s linear both;
-        }
-
         /* Vibration animation for buttons */
         @keyframes vibrate {
             0% { transform: translate(0); }
@@ -138,71 +91,57 @@
         }
     </style>
 </head>
-
 <body>
-    <!-- Full-screen Popup Overlay -->
-    <div class="popup-overlay" id="popup-overlay">
-        <div class="popup-content">
-            <h1>Welcome to BlockTest</h1>
-            <h3 class="h3top">A server by cool people for cool people 😎</h3>
-            <p>Est. 2023</p>
-            <div class="buttons">
-                <button onclick="acknowledgeAnnouncement()">Continue to Game</button>
-                <button onclick="gotobeta()">Touchscreen Version (Beta)</button>
-                <button onclick="openMap()">Open Server Map</button>
-                <button onclick="openContact()">Contact Us</button>
-            </div>
-            <button onclick="closePopup()">Close Popup</button> <!-- Close button -->
+    <!-- Existing content section -->
+    <div class="content">
+        <h1>Welcome to BlockTest</h1>
+        <h3 class="h3top">A server by cool people for cool people 😎</h3>
+        <p>Est. 2023</p>
+        <div class="buttons">
+            <button onclick="acknowledgeAnnouncement()">Continue to Game</button>
+            <button onclick="gotobeta()">Touchscreen Version (Beta)</button>
+            <button onclick="openMap()">Open Server Map</button>
+            <button onclick="openContact()">Contact Us</button>
         </div>
+        <br>
+        <div class="serverdis" id="embed"></div>
     </div>
 
-    <!-- Hidden embed server info -->
-    <div class="serverdis" id="embed"></div>
+    <!-- Popup Section (New Popup Structure) -->
+    <div id="popup" class="popup-container">
+        <h1>Popup Title</h1>
+        <p id="popup-message">This is a customizable message that can show multi-line content.</p>
+        <button class="close-btn" id="close-btn">Close</button>
+    </div>
 
-    <script type="text/javascript">
-        window.addEventListener("load", () => {
-            // Show the popup overlay automatically on page load with an animation
-            document.getElementById("popup-overlay").style.display = "flex";
-            
-            // Embed server info
-            new ServerEmbed(document.getElementById("embed"), "100%").ping("play.blocktestx.xyz", "BlockTest Main Server", true, false, true);
-        });
-
-        // Close the popup when clicking the button
-        function closePopup() {
-            document.getElementById("popup-overlay").style.display = "none";
-        }
-
-        // Define your game redirection functions
-        window.gotobeta = function() {
-            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-            window.location.href = 'beta/touchscreen';
-        };
-
-        window.acknowledgeAnnouncement = function() {
-            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-            window.location.href = 'blocktest';
-        };
-
-        window.openMap = function() {
-            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-            const mapURL = "https://map.blocktest.live";
-            window.open(mapURL, "Server Map", "width=800,height=600");
-        };
-
-        window.openContact = function() {
-            const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeub3K0onZUimP8Bi3TPUX9v8AQEwMjTJRLI_QCvK01D5_IUw/viewform?usp=sf_link";
-            window.open(formURL, "Google Form", "width=800,height=600");
-        };
-    </script>
-
+    <!-- Footer content -->
     <div class="content2">
         <footer>
-            <a style="text-decoration:none" href="https://blocktest.live/" class="footertext">Made By BigManV2 With Code</a>
+            <a style="text-decoration:none" href="https://blocktest.live/" class="footertext">Made By BigManV2 With Code</a> 
             <br>
             <a class="norm" href="https://discord.gg/6Kwe23KTWf">Join Our Discord</a>
             <a class="norm" href="mailto:bigmanv2@blocktestx.xyz">Email Me</a>
         </footer>
     </div>
+
+    <!-- JavaScript for Popup Logic -->
+    <script>
+        // Function to show the popup
+        window.onload = function() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "flex";  // Show the popup on page load
+        };
+
+        // Close button functionality
+        document.getElementById("close-btn").onclick = function() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "none";  // Hide the popup when the close button is clicked
+        };
+        
+        // You can also add custom popup messages if needed
+        function updatePopupMessage(message) {
+            document.getElementById("popup-message").innerText = message;
+        }
+    </script>
 </body>
 </html>
