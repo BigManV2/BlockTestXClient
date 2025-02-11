@@ -19,7 +19,7 @@ function closePopup() {
 // Event listeners
 showPopupBtn.addEventListener('click', () => {
     showPopup('This is a dynamic message for the popup!\nYou can customize it.');
-    
+    alert("it should have shown up");
 });
 
 closeBtn.addEventListener('click', closePopup);
