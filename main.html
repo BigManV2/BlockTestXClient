@@ -1,28 +1,14 @@
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
 <!DOCTYPE html>
-<style>
-.jiggle {
-animation: zoomIn;
-animation-duration: 1s;
-}
-</style>
-<html class="jiggle" lang="en">
-	<script type="text/javascript" src="embed.js"></script>
-<script type="text/javascript">
-window.addEventListener("load", () => {
-	new ServerEmbed(document.getElementById("embed"), "100%").ping("play.blocktestx.xyz", "BlockTest Main Server", true, false, true);
-});
-</script>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Continue</title>
-<style>
-    /* Center the content horizontally and vertically */
-    body {
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continue</title>
+    <!-- Popup CSS (Styling for the popup) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+      /* Center the content horizontally and vertically */
+      body {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -31,39 +17,40 @@ window.addEventListener("load", () => {
         font-family: Arial, sans-serif;
         text-align: center;
         background-color: #282828;
-    }
+        overflow: hidden; /* Hide overflow */
+      }
 
-    .content {
-    	margin-top: -60px;
+      .content {
+        margin-top: -60px;
         background-color: #3f3f3f;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         max-width: 400px;
-    }
+      }
 
-    h1 {
+      h1 {
         margin-bottom: 20px;
         color: #007b07;
-    }
+      }
 
-    .h3top {
+      .h3top {
         margin-top: -15px;
-        color: #007b07
-    }
+        color: #007b07;
+      }
 
-    p {
+      p {
         margin-bottom: 20px;
-         color: #007b07;
-    }
+        color: #007b07;
+      }
 
-    .buttons {
+      .buttons {
         display: flex;
         flex-direction: column;
         gap: 10px;
-    }
-    button:hover {animation:vibrate 0.4s linear both} @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
-    button {
+      }
+
+      button {
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
@@ -72,104 +59,169 @@ window.addEventListener("load", () => {
         background-color: #348a2b;
         color: #fff;
         transition: background-color 0.3s;
-    }
+      }
 
-    button:hover {
+      button:hover {
         background-color: #007b07;
-    }
+      }
 
-    .content2 {
+      .content2 {
         position: fixed;
         bottom: 10px;
         background-color: #3f3f3f;
         padding: 13px;
-        border-radius:8px;
+        border-radius: 8px;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         max-width: 400px;
-    }
+      }
 
-    /* Footer styles */
-    footer {
-        
+      footer {
         text-align: center;
         padding: 10px 0;
-    }
+      }
 
-     .norm {
+      .norm {
         color: #519846;
         margin-top: 5px;
         text-decoration: underline;
-    }
+      }
 
-    .norm:hover {
+      .norm:hover {
         text-decoration: blink;
-    }
-    .footertext {
+      }
+
+      .footertext {
         color: #007b07;
         margin-bottom: 0px;
         margin-top: -5px;
-    }
-    .log {
+      }
+
+      .log {
         background-color: #bf2713;
+      }
+
+      /* Popup Styles */
+      #popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #3f3f3f;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        max-width: 9999px;
+        max-hight: 9999px;
+        z-index: 9999;
+        display: none; /* Hidden initially */
+      }
+
+      #popup h1 {
+        color: #007b07;
+        margin-bottom: 15px;
+      }
+
+      #popup p {
+    color: #007b07;
+    white-space: pre-line; /* This ensures newlines in text are displayed */
+    margin-bottom: 20px;
     }
-    
-    .log:hover {animation:vibrate 0.4s linear both} @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
-    .log:hover {
+
+
+      .close-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
         background-color: #bf2713;
-    }
-    .serverdis:hover {animation:vibrate 0.4s linear both} @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
-</style>
-     
-</head>
-<body>
-<div class="content">
-    <h1>Welcome to BlockTest</h1>
-    <h3 class="h3top">a server by cool people for cool people 😎</h3>
-    <p>Est. 2023</p>
-    <div class="buttons">
+        color: #fff;
+        transition: background-color 0.3s;
+      }
+
+      .close-btn:hover {
+        background-color: #9b1f0e;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Main Content -->
+    <div class="content">
+      <h1>Welcome to BlockTest</h1>
+      <h3 class="h3top">a server by cool people for cool people 😎</h3>
+      <p>Est. 2023</p>
+      <div class="buttons">
         <button onclick="acknowledgeAnnouncement()">Continue to Game</button>
         <button onclick="gotobeta()">Touchscreen Version (Beta)</button>
         <button onclick="openMap()">Open Server Map</button>
         <button onclick="openContact()">Contact Us</button>
+      </div>
+      <br>
+      <div class="serverdis" id="embed"></div>
     </div>
-    <br>
-	<div class="serverdis" id="embed"></div>
-</div>
 
-<script>
-    (function() {
-        
-        window.gotobeta = function() {
-            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-            window.location.href = 'beta/touchscreen';
-        };
-		
-        window.acknowledgeAnnouncement = function() {
-            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-            window.location.href = 'blocktest';
-        };
+    <!-- Popup (Initially Hidden) -->
+    <div id="popup">
+      <h1>NEW MESSAGE</h1>
+      <p id="popup-message">Please Join Our Discord Server
+      
+      this website will be blocked in the near future. 
+      when it does ill buy a new one and when i do ill put it in the discord.
+      i have lost many players because of things like this.
+      
+      dont be one of them
+      https://discord.gg/6Kwe23KTWf
+      </p>
+      <button class="close-btn" id="close-btn">Close</button>
+    </div>
 
-        window.openMap = function() {
-            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-            const mapURL = "https://map.blocktest.live";
-            window.open(mapURL, "Server Map", "width=800,hight=600");
-        };
+    <script>
+      // Function to show the popup
+      function showPopup() {
+        document.getElementById("popup").style.display = "block";
+      }
 
-        window.openContact = function() {
-            const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeub3K0onZUimP8Bi3TPUX9v8AQEwMjTJRLI_QCvK01D5_IUw/viewform?usp=sf_link";
-            window.open(formURL, "Google Form", "width=800,height=600");
-        };
+      // Function to close the popup
+      document.getElementById("close-btn").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+      });
 
+      // Show popup on page load
+      window.onload = function () {
+        showPopup();
+      };
 
-    })();
-</script>
-<div class="content2">
-<footer>
-    <a style="text-decoration:none" href="https://blocktest.live/" class="footertext">Made By BigManV2 With Code</a> 
-	<br>
-    <a class="norm" href="https://discord.gg/6Kwe23KTWf">Join Our Discord</a>
-    <a class="norm"  href="mailto:bigmanv2@blocktestx.xyz">Email Me</a>
-</footer>
-</div>
-</body>
+      // Add other functions as required for the buttons
+      window.gotobeta = function () {
+        document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
+        window.location.href = 'beta/touchscreen';
+      };
+
+      window.acknowledgeAnnouncement = function () {
+        document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
+        window.location.href = 'blocktest';
+      };
+
+      window.openMap = function () {
+        document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
+        const mapURL = "https://map.blocktest.live";
+        window.open(mapURL, "Server Map", "width=800,height=600");
+      };
+
+      window.openContact = function () {
+        const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeub3K0onZUimP8Bi3TPUX9v8AQEwMjTJRLI_QCvK01D5_IUw/viewform?usp=sf_link";
+        window.open(formURL, "Google Form", "width=800,height=600");
+      };
+    </script>
+
+    <div class="content2">
+      <footer>
+        <a style="text-decoration:none" href="https://blocktest.live/" class="footertext">Made By BigManV2 With Code</a>
+        <br>
+        <a class="norm" href="https://discord.gg/6Kwe23KTWf">Join Our Discord</a>
+        <a class="norm" href="mailto:bigmanv2@blocktestx.xyz">Email Me</a>
+      </footer>
+    </div>
+  </body>
 </html>
