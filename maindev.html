@@ -110,7 +110,8 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-        max-width: 400px;
+        max-width: 9999px;
+        max-hight: 9999px;
         z-index: 9999;
         display: none; /* Hidden initially */
       }
@@ -121,9 +122,11 @@
       }
 
       #popup p {
-        color: #007b07;
-        margin-bottom: 20px;
-      }
+    color: #007b07;
+    white-space: pre-line; /* This ensures newlines in text are displayed */
+    margin-bottom: 20px;
+    }
+
 
       .close-btn {
         padding: 10px 20px;
@@ -161,7 +164,15 @@
     <!-- Popup (Initially Hidden) -->
     <div id="popup">
       <h1>Popup Title</h1>
-      <p id="popup-message">This is a customizable message that can show multi-line content.</p>
+      <p id="popup-message">Please Join Our Discord Server
+      
+      this website will be blocked in the near future. 
+      when it does ill buy a new one and when i do ill put it in the discord.
+      i have lost many players because of things like this.
+      
+      dont be one of them
+      https://discord.gg/6Kwe23KTWf
+      </p>
       <button class="close-btn" id="close-btn">Close</button>
     </div>
 
