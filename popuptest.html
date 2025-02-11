@@ -1,80 +1,21 @@
-<!-- Any page where you want the popup -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Page</title>
-    <script src="popup.js"></script>
+    <title>Popup System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<style>
-    /* Global styling */
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: #282828;
-        overflow: hidden;
-    }
-
-    .content {
-        background-color: #3f3f3f;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        max-width: 100%;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1000;
-        display: none;  /* Hidden initially */
-    }
-
-    h1 {
-        margin-bottom: 20px;
-        color: #007b07;
-    }
-
-    p {
-        margin-bottom: 20px;
-        color: #007b07;
-        white-space: pre-line; /* This ensures newlines are shown in the message */
-    }
-
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        background-color: #348a2b;
-        color: #fff;
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        background-color: #007b07;
-    }
-
-    /* Close button */
-    .close-btn {
-        background-color: #bf2713;
-    }
-
-    .close-btn:hover {
-        background-color: #9b1f0e;
-    }
-</style>
 <body>
-    <h1>Welcome to the Game</h1>
+    <div class="content" id="popup">
+        <h1>Popup Title</h1>
+        <p id="popup-message">This is a customizable message that can show multi-line content.</p>
+        <button class="close-btn" id="close-btn">Close</button>
+    </div>
 
-    <button onclick="initializePopup('Custom message for this page!')">Show Popup</button>
+    <!-- Trigger buttons -->
+    <button id="show-popup-btn">Show Popup</button>
 
-    
+    <script src="popup.js"></script>
 </body>
 </html>

@@ -1,30 +1,30 @@
-// popup.js
-// Define the announcement content (default message)
-const defaultAnnouncementContent = 'Default Message\\nline1\\nline2';
+// Get elements
+const popup = document.getElementById('popup');
+const closeBtn = document.getElementById('close-btn');
+const showPopupBtn = document.getElementById('show-popup-btn');
 
-// Function to display the popup
+// Show the popup
 function showPopup(message) {
-    document.getElementById("popupMessage").innerHTML = formatMessage(message);
-    document.getElementById("popup").style.display = "block";
+    const popupMessage = document.getElementById('popup-message');
+    popupMessage.textContent = message;  // Set the message in the popup
+    popup.style.display = 'block';  // Show the popup
 }
 
-// Format the message by replacing '\\n' with <br> for new lines
-function formatMessage(message) {
-    return message.replace(/\\n/g, '<br>');
-}
-
-// Function to initialize the popup with a custom message (or default)
-function initializePopup(message) {
-    if (message.trim()) {
-        showPopup(message);  // Show the popup if there's content
-    }
-}
-
-// Close popup
+// Close the popup
 function closePopup() {
-    document.getElementById("popup").style.display = "none";
+    popup.style.display = 'none';  // Hide the popup
 }
 
-// Make the initialize function available globally
-window.initializePopup = initializePopup;
-window.closePopup = closePopup;
+// Event listeners
+showPopupBtn.addEventListener('click', () => {
+    showPopup('This is a dynamic message for the popup!\nYou can customize it.');
+});
+
+closeBtn.addEventListener('click', closePopup);
+
+// Optional: Close popup if clicked outside
+window.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        closePopup();
+    }
+});
