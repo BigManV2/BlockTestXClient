@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="jiggle" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,6 +152,7 @@
                 <button onclick="openMap()">Open Server Map</button>
                 <button onclick="openContact()">Contact Us</button>
             </div>
+            <button onclick="closePopup()">Close Popup</button> <!-- Close button -->
         </div>
     </div>
 
@@ -166,31 +167,33 @@
             // Embed server info
             new ServerEmbed(document.getElementById("embed"), "100%").ping("play.blocktestx.xyz", "BlockTest Main Server", true, false, true);
         });
-    </script>
 
-    <script>
-        (function() {
-            window.gotobeta = function() {
-                document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-                window.location.href = 'beta/touchscreen';
-            };
+        // Close the popup when clicking the button
+        function closePopup() {
+            document.getElementById("popup-overlay").style.display = "none";
+        }
 
-            window.acknowledgeAnnouncement = function() {
-                document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-                window.location.href = 'blocktest';
-            };
+        // Define your game redirection functions
+        window.gotobeta = function() {
+            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
+            window.location.href = 'beta/touchscreen';
+        };
 
-            window.openMap = function() {
-                document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
-                const mapURL = "https://map.blocktest.live";
-                window.open(mapURL, "Server Map", "width=800,height=600");
-            };
+        window.acknowledgeAnnouncement = function() {
+            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
+            window.location.href = 'blocktest';
+        };
 
-            window.openContact = function() {
-                const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeub3K0onZUimP8Bi3TPUX9v8AQEwMjTJRLI_QCvK01D5_IUw/viewform?usp=sf_link";
-                window.open(formURL, "Google Form", "width=800,height=600");
-            };
-        })();
+        window.openMap = function() {
+            document.cookie = 'announcementSeen=true; path=/'; // Set cookie to indicate the announcement has been read
+            const mapURL = "https://map.blocktest.live";
+            window.open(mapURL, "Server Map", "width=800,height=600");
+        };
+
+        window.openContact = function() {
+            const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSeub3K0onZUimP8Bi3TPUX9v8AQEwMjTJRLI_QCvK01D5_IUw/viewform?usp=sf_link";
+            window.open(formURL, "Google Form", "width=800,height=600");
+        };
     </script>
 
     <div class="content2">
