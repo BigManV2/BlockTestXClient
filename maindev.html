@@ -6,6 +6,12 @@
     <title>Continue</title>
     <!-- Popup CSS (Styling for the popup) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script type="text/javascript" src="embed.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", () => {
+        new ServerEmbed(document.getElementById("embed"), "100%").ping("play.blocktestx.xyz", "BlockTest Main Server", true, false, true);
+    });
+    </script>
     <style>
       /* Center the content horizontally and vertically */
       body {
@@ -142,6 +148,7 @@
       .close-btn:hover {
         background-color: #9b1f0e;
       }
+      .serverdis:hover {animation:vibrate 0.4s linear both} @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
     </style>
   </head>
 
